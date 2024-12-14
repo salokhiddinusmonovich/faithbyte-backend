@@ -69,11 +69,7 @@ RUN chmod +x /start
 # Expose the port Django will run on
 EXPOSE 8000
 
-# Copy the entrypoint script from the Django directory to the root of the container
-COPY ./django/entrypoint /entrypoint
 
-# Make sure the entrypoint script is executable
-RUN chmod +x /entrypoint
 
 # Set the entrypoint to use the entrypoint script
 ENTRYPOINT ["/entrypoint"]
