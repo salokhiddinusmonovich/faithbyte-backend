@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # Copy requirements and build dependency wheels
 COPY ./requirements /requirements
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /wheels -r /requirements/production.txt
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /wheels -r /requirements/requirements.txt
 
 # Final Stage
 FROM python as python-run-stage
