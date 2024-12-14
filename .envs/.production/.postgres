@@ -1,0 +1,13 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=faithbyte
+POSTGRES_USER=debug
+POSTGRES_PASSWORD=debug
+
+
+
+DATABASE_URL=postgresql://debug:debug@postgres:5432/faithbyte
+
+
