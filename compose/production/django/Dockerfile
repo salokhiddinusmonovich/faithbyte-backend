@@ -50,7 +50,7 @@ COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Set the entrypoint to run the entrypoint.sh script
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint"]
 
 # Default command to run the application (can be overridden)
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
