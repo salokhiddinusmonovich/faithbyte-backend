@@ -44,11 +44,20 @@ services:
     ports:
       - "6379:6379"  # Exposing Redis service on port 6379 (optional)
 
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - "80:80"  # Exposing NGINX to port 80 on the host machine
-    depends_on:
-      - django
+ nginx:
+   image: nginx
+   ports:
+     - "8880:80"
+   volumes:
+     - ./media:/media
+     - ./compose/production/nginx/:/etc/nginx/conf.d/
+   depends_on:
+     - django
+     - postgres
+   restart: always
+   logging:
+     driver: "json-file"
+     options:
+       max-size: "100m"
+       max-file: "10"
+
