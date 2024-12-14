@@ -17,7 +17,7 @@ services:
     volumes:
       - ./media:/app/media/
     ports:
-      - "8000:5000"
+      - "8000:8000"  # Exposing the Django service on port 8000
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
@@ -25,7 +25,7 @@ services:
       - DATABASE_URL=postgresql://debug:debug@postgres:5432/faithbyte
       - CELERY_BROKER_URL=redis://redis:6379/0
     command: ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000"]
-  
+
   postgres:
     build:
       context: .
@@ -41,3 +41,14 @@ services:
 
   redis:
     image: redis:6
+    ports:
+      - "6379:6379"  # Exposing Redis service on port 6379 (optional)
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"  # Exposing NGINX to port 80 on the host machine
+    depends_on:
+      - django
