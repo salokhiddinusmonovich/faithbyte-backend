@@ -47,7 +47,7 @@ services:
   nginx:
     image: nginx
     ports:
-      - "8080:80
+      - "8080:80"
     volumes:
       - ./media:/media
       - ./compose/production/nginx/:/etc/nginx/conf.d/
