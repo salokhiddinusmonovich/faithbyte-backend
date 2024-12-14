@@ -42,9 +42,8 @@ RUN addgroup --system django && adduser --system --ingroup django django
 RUN chown -R django:django ${APP_HOME}
 USER django
 
+# Expose the port that Django will run on
+EXPOSE 8000
 
-# COPY entrypoint.sh /entrypoint
-# RUN chmod +x /entrypoint
-# # Run the application
-# ENTRYPOINT ["/entrypoint"]
-
+# Command to run the application
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

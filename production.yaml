@@ -13,6 +13,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
+      # command: ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000"]
     image: faithbyte_production_django:latest
     depends_on:
       - postgres
