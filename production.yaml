@@ -18,6 +18,7 @@ services:
     volumes:
       - ./media:/app/media/
       - ./staticfiles:/app/static 
+      - static_files:/app/staticfiles
     ports:
       - "8000:8000"  # Exposing the Django service on port 8000
     env_file:
@@ -53,6 +54,7 @@ services:
     volumes:
       - ./media:/media
       - ./static:/static
+      - static_files:/app/staticfiles
       - ./compose/production/nginx/:/etc/nginx/conf.d/
     depends_on:
       - django
