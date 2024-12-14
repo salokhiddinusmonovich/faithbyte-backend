@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-xprt7yuwfos_7s05%^t0vz5@yvh6414*x76#xp49_!j=6ua%ll
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.v1.faithbyte.com', '109.199.100.110', 'localhost']
+ALLOWED_HOSTS = ["*"]
 
 # DATABASES = {
 #     'default': {
