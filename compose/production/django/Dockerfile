@@ -55,15 +55,23 @@ COPY . ${APP_HOME}
 RUN addgroup --system django && adduser --system --ingroup django django
 RUN chown -R django:django ${APP_HOME}
 USER django
-
+# Copy the entrypoint script and set ownership
 COPY --chown=django:django ./compose/production/django/entrypoint /entrypoint
-RUN sed -i 's/\r$//g' /entrypoint
 RUN chmod +x /entrypoint
 
+# Temporarily change ownership to root to modify the file, then reset back to django
+USER root
+RUN sed -i 's/\r$//g' /entrypoint
+USER django
 
+# Copy the start script and set ownership
 COPY --chown=django:django ./compose/production/django/start /start
-# RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
+
+# Temporarily change ownership to root to modify the file, then reset back to django
+USER root
+RUN sed -i 's/\r$//g' /start
+USER django
 
 
 # Expose the port Django will run on
