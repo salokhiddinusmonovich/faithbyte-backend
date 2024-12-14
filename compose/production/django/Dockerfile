@@ -85,7 +85,7 @@ USER django
 
 # Expose the port Django will run on
 EXPOSE 8000
-
+RUN pip install gunicorn
 
 
 # Set the entrypoint to use the entrypoint script
