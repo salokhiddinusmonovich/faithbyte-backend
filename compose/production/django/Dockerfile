@@ -43,8 +43,8 @@ RUN chown -R django:django ${APP_HOME}
 USER django
 
 
-COPY entrypoint.sh /entrypoint
-RUN chmod +x /entrypoint
-# Run the application
-ENTRYPOINT ["/entrypoint"]
+# COPY entrypoint.sh /entrypoint
+# RUN chmod +x /entrypoint
+# # Run the application
+# ENTRYPOINT ["/entrypoint"]
 
