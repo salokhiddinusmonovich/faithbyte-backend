@@ -1,19 +1,15 @@
 version: '1.1'
 
-
-volumes: 
+volumes:
   production_postgres_data: {}
   production_postgres_data_backups: {}
   media: {}
-
-
 
 services:
   django: &django
     build:
       context: .
       dockerfile: ./compose/production/django/Dockerfile
-      command: ["gunicorn", "faithbyte_backend.wsgi:application", "--bind", "0.0.0.0:8000"]
     image: faithbyte_production_django:latest
     depends_on:
       - postgres
@@ -25,10 +21,10 @@ services:
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
-    command: bash /start
     environment:
       - DATABASE_URL=postgresql://debug:debug@postgres:5432/faithbyte
       - CELERY_BROKER_URL=redis://redis:6379/0
+    command: ["gunicorn", "faithbyte_backend.wsgi:application", "--bind", "0.0.0.0:8000"]
   
   postgres:
     build:
@@ -45,5 +41,3 @@ services:
 
   redis:
     image: redis:6
-
-      
