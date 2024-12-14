@@ -39,6 +39,15 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 WORKDIR ${APP_HOME}
 
+# Install dependencies for GDAL and PostGIS
+RUN apt-get update && apt-get install -y \
+    libgdal-dev \
+    postgis \
+    && rm -rf /var/lib/apt/lists/*
+
+# Ensure GDAL is available
+ENV GDAL_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libgdal.so
+
 # Install runtime dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
     libpq-dev && \
