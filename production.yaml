@@ -24,7 +24,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://debug:debug@postgres:5432/faithbyte
       - CELERY_BROKER_URL=redis://redis:6379/0
-    command: ["gunicorn", "faithbyte_backend.wsgi:application", "--bind", "0.0.0.0:8000"]
+    command: ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000"]
   
   postgres:
     build:
