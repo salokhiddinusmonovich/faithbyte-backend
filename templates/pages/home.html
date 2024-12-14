@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaithByte - Islamic Digital Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00a389;
+            --secondary: #004d40;
+            --accent: #ffd700;
+            --text: #2c3e50;
+            --background: #f8f9fa;
+            --pattern: #1a365d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&q=80&w=1920') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .hero-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease;
+        }
+
+        .bismillah {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .arabic-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .english-title {
+            font-size: 24px;
+            color: var(--secondary);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--text);
+            margin-top: 10px;
+        }
+
+        .feature-highlights {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .feature i {
+            font-size: 40px;
+            color: var(--primary);
+        }
+
+        .feature span {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .cta-buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .primary-btn {
+            background-color: var(--primary);
+        }
+
+        .secondary-btn {
+            background-color: var(--secondary);
+        }
+
+        .primary-btn:hover,
+        .secondary-btn:hover {
+            opacity: 0.8;
+        }
+
+        .verse-banner {
+            background-color: var(--pattern);
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .verse-content {
+            text-align: center;
+        }
+
+        .verse-content .arabic {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .verse-content .translation {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .verse-content .reference {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-mosque"></i>
+                Faith<span>Byte</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#download">Download</a>
+                <a href="#contact" class="cta-button">Contact Us</a>
+            </div>
+        </nav>
+        
+        <div class="hero-content">
+            <div class="bismillah">﷽</div>
+            <h1>
+                <span class="arabic-title">نور الإيمان</span>
+                <span class="english-title">Digital Islamic Guidance</span>
+            </h1>
+            <p class="subtitle">Empowering Your Spiritual Journey Through Technology</p>
+            
+            <div class="feature-highlights">
+                <div class="feature">
+                    <i class="fas fa-book-quran"></i>
+                    <span>Digital Quran</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <span>Prayer Times</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-compass"></i>
+                    <span>Qibla Finder</span>
+                </div>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="#download" class="primary-btn">
+                    Get Started
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#learn" class="secondary-btn">
+                    Learn More
+                    <i class="fas fa-info-circle"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="verse-banner">
+            <div class="verse-content">
+                <span class="arabic">وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا</span>
+                <span class="translation">"And whoever fears Allah, He will make for him a way out"</span>
+                <span class="reference">At-Talaq 65:2</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroContent = document.querySelector('.hero-content');
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                heroContent.style.transition = 'all 1s ease';
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 300);
+            
+            // Animate features
+            const features = document.querySelectorAll('.feature');
+            features.forEach((feature, index) => {
+                feature.style.opacity = '0';
+                feature.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    feature.style.transition = 'all 0.5s ease';
+                    feature.style.opacity = '1';
+                    feature.style.transform = 'translateY(0)';
+                }, 600 + (index * 200));
+            });
+            
+            // Animate verse banner
+            const verseBanner = document.querySelector('.verse-banner');
+            verseBanner.style.opacity = '0';
+            verseBanner.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                verseBanner.style.transition = 'all 0.5s ease';
+                verseBanner.style.opacity = '1';
+                verseBanner.style.transform = 'translateY(0)';
+            }, 1200);
+        });
+    </script>
+</body>
+</html>
