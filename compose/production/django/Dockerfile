@@ -46,8 +46,8 @@ USER django
 EXPOSE 8000
 
 # Add the entrypoint script and make it executable
-COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY ./entrypoint.sh /entrypoint
+RUN chmod +x /entrypoint
 
 # Set the entrypoint to run the entrypoint.sh script
 ENTRYPOINT ["/entrypoint"]
