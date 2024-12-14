@@ -1,3 +1,4 @@
+# Use the official Python image from the Docker Hub
 ARG PYTHON_VERSION=3.10-slim-bullseye
 
 # Define the Python base image
@@ -19,6 +20,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /wheels -r /requirements/requ
 # Final Stage
 FROM python as python-run-stage
 
+# Define the app's home directory
 ARG APP_HOME=/app
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -37,20 +39,22 @@ RUN pip install --no-cache-dir --no-index --find-links=/wheels /wheels/*
 # Copy application code
 COPY . ${APP_HOME}
 
-# Create and use a non-root user
+# Create and use a non-root user for security
 RUN addgroup --system django && adduser --system --ingroup django django
 RUN chown -R django:django ${APP_HOME}
 USER django
 
-# Expose the port that Django will run on
+# Expose the port Django will run on
 EXPOSE 8000
 
-# Add the entrypoint script and make it executable
-COPY ./entrypoint /entrypoint
+# Copy the entrypoint script from the Django directory to the root of the container
+COPY ./django/entrypoint /entrypoint
+
+# Make sure the entrypoint script is executable
 RUN chmod +x /entrypoint
 
-# Set the entrypoint to run the entrypoint.sh script
+# Set the entrypoint to use the entrypoint script
 ENTRYPOINT ["/entrypoint"]
 
-# Default command to run the application (can be overridden)
+# The command to run the Django application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
