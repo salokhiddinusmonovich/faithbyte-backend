@@ -45,5 +45,12 @@ USER django
 # Expose the port that Django will run on
 EXPOSE 8000
 
-# Command to run the application
+# Add the entrypoint script and make it executable
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Set the entrypoint to run the entrypoint.sh script
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Default command to run the application (can be overridden)
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
