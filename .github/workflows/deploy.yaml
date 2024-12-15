@@ -23,7 +23,7 @@ jobs:
 
       - name: Deploying
         run: |
-          cd faithbyte_backend/
+          cd faithbyte-backend/
           git pull origin main
           echo 'project updated'
           sudo -S docker-compose -f production.yml run --rm django python manage.py migrate
