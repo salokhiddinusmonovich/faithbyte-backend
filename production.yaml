@@ -19,7 +19,7 @@ services:
       - ./media:/app/media
       - ./staticfiles:/app/staticfiles
     ports:
-      - "8000:8000"
+      - "8000:5000"
     env_file:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
