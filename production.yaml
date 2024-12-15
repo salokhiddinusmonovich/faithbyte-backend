@@ -4,7 +4,8 @@ volumes:
   production_postgres_data: {}
   production_postgres_data_backups: {}
   media: {}
-  static_files: {}
+  static_files: 
+  static: 
 
 
 services:
@@ -55,7 +56,7 @@ services:
     volumes:
       - ./media:/media
       - ./static:/static
-      - static_files:/app/staticfiles
+      - static_files:/staticfiles
       - ./compose/production/nginx/:/etc/nginx/conf.d/
     depends_on:
       - django
