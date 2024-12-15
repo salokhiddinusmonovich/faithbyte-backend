@@ -1,13 +1,17 @@
 asgiref==3.8.1
+attrs==24.2.0
 Django==4.2.9
 django-environ==0.11.2
 django-filter==24.3
 djangorestframework==3.15.2
 djangorestframework-simplejwt==5.3.1
+drf-spectacular==0.28.0
 drf-yasg==1.21.8
 environ==1.0
 gunicorn==23.0.0
 inflection==0.5.1
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
 packaging==24.2
 pillow==11.0.0
 psycopg2==2.9.10
@@ -16,7 +20,8 @@ PyJWT==2.10.1
 python-dotenv==1.0.1
 pytz==2024.2
 PyYAML==6.0.2
+referencing==0.35.1
+rpds-py==0.22.3
 sqlparse==0.5.2
 typing_extensions==4.12.2
 uritemplate==4.1.1
-drf-spectacular>=0.23.1
