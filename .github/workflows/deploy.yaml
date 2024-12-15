@@ -13,32 +13,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Ensure full history is fetched
-
-      - name: List files to verify directory
-        run: |
-          echo "Current directory:"
-          pwd
-          echo "Listing files:"
-          ls -la
 
       - name: Change to backend directory
         run: |
-          if [ -d "faithbyte-backend" ]; then
-            cd faithbyte-backend
-            echo "Successfully changed directory!"
-          else
-            echo "Directory 'faithbyte-backend' not found."
-            exit 1
-          fi
-
+          cd faithbyte-backend
+          echo "Successfully changed to faithbyte-backend directory!"
+          
       - name: Pull latest changes
         run: |
+          cd faithbyte-backend
           git pull origin main
 
       - name: Run migrations
         run: |
+          cd faithbyte-backend
           sudo -S docker-compose -f production.yml run --rm django python manage.py migrate
