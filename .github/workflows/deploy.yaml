@@ -16,17 +16,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Change to backend directory
+      - name: Pull latest changes in backend
         run: |
+          echo "Hello, server!"
           cd faithbyte-backend/
-          echo "Successfully changed to faithbyte-backend directory!"
-          
-      - name: Pull latest changes
-        run: |
-          cd faithbyte-backend
           git pull origin main
-
-      - name: Run migrations
-        run: |
-          cd faithbyte-backend
-          sudo -S docker-compose -f production.yml run --rm django python manage.py migrate
