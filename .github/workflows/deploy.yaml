@@ -16,8 +16,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Pull latest changes in backend
+      - name: Pull latest changes in backend with sudo
         run: |
           echo "Hello, server!"
-          cd faithbyte-backend/
-          git pull origin main
+          sudo -S cd faithbyte-backend/
+          sudo -S git pull origin main
