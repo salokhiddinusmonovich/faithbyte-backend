@@ -34,7 +34,7 @@ if READ_DOT_ENV_FILE:
 SECRET_KEY = 'django-insecure-xprt7yuwfos_7s05%^t0vz5@yvh6414*x76#xp49_!j=6ua%ll'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
