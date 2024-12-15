@@ -56,7 +56,8 @@ services:
       - django
     volumes:
       - ./media:/media
-       - static_files:/app/staticfiles
+       - ./static_files:/app/staticfiles
+       - ./static:/app/static
       - ./compose/production/nginx:/etc/nginx/conf.d/
     restart: always
     logging:
