@@ -16,9 +16,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploying
+      - name: List files for debugging
         run: |
-          cd faithbyte-backend/
+          ls -la
+
+      - name: Change to backend directory
+        run: |
+          cd faithbyte-backend || { echo "Directory not found!"; exit 1; }
+
+      - name: Pull latest changes
+        run: |
           git pull origin main
-          echo 'Project updated'
+
+      - name: Run migrations
+        run: |
           sudo -S docker-compose -f production.yml run --rm django python manage.py migrate
