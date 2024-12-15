@@ -4,7 +4,7 @@ volumes:
   production_postgres_data: {}
   production_postgres_data_backups: {}
   media: {}
-  staticfiles: {}
+  staticfiles: 
 
 services:
   django:
@@ -17,7 +17,7 @@ services:
       - redis
     volumes:
       - ./media:/app/media
-      - ./staticfiles:/app/staticfiles
+      - static_files:/app/staticfiles
     ports:
       - "8000:5000"
     env_file:
@@ -54,7 +54,7 @@ services:
       - django
     volumes:
       - ./media:/media
-      - ./staticfiles:/staticfiles
+       - static_files:/app/staticfiles
       - ./compose/production/nginx:/etc/nginx/conf.d/
     restart: always
     logging:
