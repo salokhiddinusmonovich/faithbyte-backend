@@ -16,14 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.10  # Use a supported version like 3.10
-
       - name: Deploying
         run: |
           cd faithbyte-backend/
           git pull origin main
-          echo 'project updated'
+          echo 'Project updated'
           sudo -S docker-compose -f production.yml run --rm django python manage.py migrate
