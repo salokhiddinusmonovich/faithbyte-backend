@@ -17,6 +17,7 @@ services:
       - redis
     volumes:
       - ./media:/app/media
+      - ./static:/app/stati
       - static_files:/app/staticfiles
     ports:
       - "8000:5000"
