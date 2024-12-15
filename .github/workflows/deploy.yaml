@@ -18,7 +18,7 @@ jobs:
 
       - name: Change to backend directory
         run: |
-          cd faithbyte-backend
+          cd faithbyte-backend/
           echo "Successfully changed to faithbyte-backend directory!"
           
       - name: Pull latest changes
