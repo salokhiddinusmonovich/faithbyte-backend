@@ -19,15 +19,15 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: '3.10'  # Ensure the correct version is set
 
-      - name: Deloying
+      - name: Deploying
         run: |
           cd faithbyte_backend/
           git pull origin main
           echo 'project updated'
           sudo -S docker-compose -f production.yml run --rm django python manage.py migrate
 
-
-    #   - name: Run tests
-    #     run: python manage.py test
+    # Optional: Run tests if needed
+    # - name: Run tests
+    #   run: python manage.py test
