@@ -13,16 +13,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensure full history is fetched
 
-      - name: List files for debugging
+      - name: List files to verify directory
         run: |
+          echo "Current directory:"
+          pwd
+          echo "Listing files:"
           ls -la
 
       - name: Change to backend directory
         run: |
-          cd faithbyte-backend || { echo "Directory not found!"; exit 1; }
+          if [ -d "faithbyte-backend" ]; then
+            cd faithbyte-backend
+            echo "Successfully changed directory!"
+          else
+            echo "Directory 'faithbyte-backend' not found."
+            exit 1
+          fi
 
       - name: Pull latest changes
         run: |
